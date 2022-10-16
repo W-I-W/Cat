@@ -12,3 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a035ff2ab6c5845abfa51b68566e8b, type: 3}
   m_Name: Motion
   m_EditorClassIdentifier: 
+  Idle: {fileID: 7400000, guid: abc2616963706a048b84d2b9f8765edf, type: 2}
+  Walk: {fileID: 7400000, guid: 1c8f461d15c32f642b619dd551dc37ba, type: 2}
+  Run: {fileID: 7400000, guid: 5b09c5b36a5b5a94caab60a74702185a, type: 2}
+  JumpUp: {fileID: 7400000, guid: d97b33dfd2bbabc419db1f4a17379b64, type: 2}
+  JumpDown: {fileID: 7400000, guid: 0138c68ffb99abc4c981ea95555bf360, type: 2}
+  Landing: {fileID: 7400000, guid: a50967822cbcbc54c9414a0e969cd1fd, type: 2}
+  BreakMove: {fileID: 7400000, guid: d82899af8f1ef7443b0b10e96e1ec852, type: 2}
+  ForwardAttack: {fileID: 7400000, guid: a91787928907a5740b2cdb6815afce3d, type: 2}
+  BackAttack: {fileID: 7400000, guid: 95d290374ef75dc4e8327e0e2a48065a, type: 2}
+  WalkAttack: {fileID: 7400000, guid: 38f2bdbd3e575e245a581fa29ee20822, type: 2}
+  SitIdle: {fileID: 7400000, guid: 5ba1fca59c3bf2542a84a9d19d07616d, type: 2}
+  SitUp: {fileID: 7400000, guid: 3391b1ef7d54908418e2bc9d2de0f881, type: 2}
+  SitDown: {fileID: 7400000, guid: 1ae69d9fde0df9b49bc87ff0c65f04ec, type: 2}
+  Rest: {fileID: 7400000, guid: f14e0e6a66e9cc44a8ce30752fe5d22e, type: 2}
+  Sleep: {fileID: 7400000, guid: 0cbc48f380cd57c45a6b52eb71d26994, type: 2}

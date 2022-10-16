@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Character : MonoBehaviour, IHealth
 {
-    public Animator AnimatorController;
+    [HideInInspector] public Animator AnimatorController;
     protected Collider2D RootCollider;
     [SerializeField] private int m_Health = 10;
     public int Health { get => m_Health; set => m_Health = value; }

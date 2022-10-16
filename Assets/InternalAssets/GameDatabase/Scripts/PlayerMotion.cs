@@ -42,9 +42,4 @@ public class PlayerMotion : ScriptableObject
     public Motion Rest;
     [BoxGroup("Sit")]
     public Motion Sleep;
-
-    //public Motion
-    //public Motion
-    //public Motion
-
 }

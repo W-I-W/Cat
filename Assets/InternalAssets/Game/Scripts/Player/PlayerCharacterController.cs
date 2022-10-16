@@ -1,15 +1,19 @@
 using System;
+using System.Threading.Tasks;
 using System.Collections;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Threading;
+using System.Collections.Generic;
 
-
+[RequireComponent(typeof(PlayerAnimator))]
 public class PlayerCharacterController : PlayerCharacter
 {
     private Rigidbody2D m_Physics;
 
     private SpriteRenderer m_Sprite;
+    private PlayerMotion m_Motion;
 
     private Coroutine m_MoveCoroutine;
 
@@ -28,6 +32,8 @@ public class PlayerCharacterController : PlayerCharacter
     public override void Start()
     {
         base.Start();
+
+        m_Motion = GetComponent<PlayerAnimator>().Motion;
         m_Sprite = GetComponent<SpriteRenderer>();
         m_Physics = GetComponent<Rigidbody2D>();
     }
@@ -117,13 +123,16 @@ public class PlayerCharacterController : PlayerCharacter
     {
         if (input.action.IsPressed())
             m_Axis = input.ReadValue<float>();
+        else
+            AnimatorController.Play("Idle");
+
 
         if (!m_IsSit)
         {
 
             m_IsWalk = input.action.IsPressed();
-            AnimatorController.SetBool("Walk", m_IsWalk);
-
+            //AnimatorController.SetBool("Walk", m_IsWalk);
+            AnimatorController.Play("Walk");
             if (m_IsWalk)
                 PlayMove(m_Axis);
             else
@@ -137,7 +146,8 @@ public class PlayerCharacterController : PlayerCharacter
     {
         m_IsRun = input.action.IsPressed();
         m_SpeedRun = 1f + Convert.ToInt32(m_IsRun);
-        AnimatorController.SetBool("Run", m_IsRun);
+        //AnimatorController.SetBool("Run", m_IsRun);
+        AnimatorController.Play("Run");
 
         if (m_IsWalk)
             PlayMove(m_Axis);
@@ -152,20 +162,24 @@ public class PlayerCharacterController : PlayerCharacter
                 if (m_IsRest)
                 {
                     m_IsSleep = true;
-                    AnimatorController.SetBool("Sleep", m_IsSleep);
+                    AnimatorController.Play(m_Motion.Sleep.name);
+                    //AnimatorController.SetBool("Sleep", m_IsSleep);
                     return;
                 }
 
                 m_IsRest = true;
-                AnimatorController.SetBool("Rest", m_IsRest);
+                AnimatorController.Play(m_Motion.Rest.name);
+                //AnimatorController.SetBool("Rest", m_IsRest);
                 return;
             }
 
             m_IsSit = true;
-            AnimatorController.SetBool("Sit", m_IsSit);
+            StartCoroutine(SleepAnimation(m_Motion.SitDown, m_Motion.SitIdle));
+            //AnimatorController.SetBool("Sit", m_IsSit);
             return;
         }
     }
+
 
     public void OnSitUp(InputAction.CallbackContext input)
     {
@@ -173,9 +187,10 @@ public class PlayerCharacterController : PlayerCharacter
         m_IsSit = false;
         m_IsRest = false;
         m_IsSleep = false;
-        AnimatorController.SetBool("Sit", m_IsSit);
-        AnimatorController.SetBool("Rest", m_IsRest);
-        AnimatorController.SetBool("Sleep", m_IsSleep);
+        StartCoroutine(SleepAnimation(m_Motion.SitUp, m_Motion.Idle));
+        //AnimatorController.SetBool("Sit", m_IsSit);
+        //AnimatorController.SetBool("Rest", m_IsRest);
+        //AnimatorController.SetBool("Sleep", m_IsSleep);
     }
 
     private void PlayMove(float axis)
@@ -193,5 +208,14 @@ public class PlayerCharacterController : PlayerCharacter
         yield return null;
         goto PLAY;
 
+    }
+
+    private IEnumerator SleepAnimation(Motion begin, Motion end)
+    {
+        AnimatorController.Play(begin.name);
+        yield return null;
+        AnimatorStateInfo info = AnimatorController.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(info.length);
+        AnimatorController.Play(end.name);
     }
 }
