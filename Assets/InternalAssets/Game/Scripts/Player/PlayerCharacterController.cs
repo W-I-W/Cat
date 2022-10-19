@@ -20,14 +20,17 @@ public class PlayerCharacterController : PlayerCharacter
     private float m_SpeedRun = 1;
     private float m_Axis = 0;
 
+    private Motion m_NextAnimation;
+
 
     private bool m_IsWalk = false;
     private bool m_IsRun = false;
     private bool m_IsSit = false;
     private bool m_IsRest = false;
     private bool m_IsSleep = false;
-    private bool m_IsJump = false;
+    //private bool m_IsJump = false;
     private bool m_IsGround = false;
+    private bool m_IsLanding = false;
 
     public override void Start()
     {
@@ -40,7 +43,8 @@ public class PlayerCharacterController : PlayerCharacter
 
     private void Update()
     {
-        OnAttack();
+        //OnAttack();
+        m_IsGround = IsGround();
         OnJumpDown();
     }
 
@@ -64,35 +68,44 @@ public class PlayerCharacterController : PlayerCharacter
             bool backAttack = m_Physics.position.x < enemy.transform.position.x && m_Sprite.flipX || m_Physics.position.x > enemy.transform.position.x && !m_Sprite.flipX;
             int damage = 1;
 
-            if (AnimatorController.GetBool("Run"))
+            if (AnimatorController.GetCurrentAnimatorStateInfo(0).IsName(m_Motion.Walk.name))
             {
-                AnimatorController.SetTrigger("RunAttack");
+                //AnimatorController.SetTrigger("RunAttack");
+                AnimatorController.Play(m_Motion.WalkAttack.name);
                 damage = 2;
             }
             else if (forwardAttack)
-                AnimatorController.SetTrigger("ForwardAttack");
+                AnimatorController.Play(m_Motion.ForwardAttack.name);
+            //AnimatorController.SetTrigger("ForwardAttack");
             else if (backAttack)
-                AnimatorController.SetTrigger("BackAttack");
+                AnimatorController.Play(m_Motion.BackAttack.name);
+            //AnimatorController.SetTrigger("BackAttack");
             enemy.TakeDamage(damage);
 
         }
+    }
+
+    private bool IsGround()
+    {
+        Vector2 start = m_Physics.position + Vector2.down / 4f;
+        Vector2 end = m_Physics.position + Vector2.down / 1.96f;
+        Debug.DrawLine(start, end);
+        RaycastHit2D hit = Physics2D.Linecast(start, end);
+        return (hit.collider != null);
+
     }
 
     private void OnJumpDown()
     {
         if (m_Physics.velocity.y < -0.1f)
         {
-            Vector2 start = m_Physics.position + Vector2.down / 4f;
-            Vector2 end = m_Physics.position + Vector2.down / 1.96f;
-
-            Debug.DrawLine(start, end);
-            m_IsJump = false;
-            AnimatorController.SetBool("JumpUp", m_IsJump);
-
-            RaycastHit2D hit = Physics2D.Linecast(start, end);
-            m_IsGround = (hit.collider != null);
-
-            AnimatorController.SetBool("Ground", m_IsGround);
+            AnimatorStateInfo info = AnimatorController.GetCurrentAnimatorStateInfo(0);
+            if (info.IsName(m_Motion.JumpUp.name))
+            {
+                AnimatorController.Play(m_Motion.JumpDown.name);
+            }
+            else if (m_IsGround && info.IsName(m_Motion.JumpDown.name))
+                StartCoroutine(SleepAnimation(m_Motion.Landing, m_NextAnimation));
         }
     }
 
@@ -110,10 +123,8 @@ public class PlayerCharacterController : PlayerCharacter
 
             bool isGround = hit.collider.TryGetComponent(out Ground ground);
             if (!isGround) return;
-            m_IsJump = true;
-            AnimatorController.SetBool("JumpUp", m_IsJump);
-            AnimatorController.SetTrigger("Jump");
-            AnimatorController.SetBool("Ground", false);
+            // m_IsJump = true;
+            AnimatorController.Play(m_Motion.JumpUp.name);
             m_Physics.AddForce(new Vector2(0, 200f));
 
         }
@@ -121,36 +132,50 @@ public class PlayerCharacterController : PlayerCharacter
 
     public void OnMove(InputAction.CallbackContext input)
     {
-        if (input.action.IsPressed())
-            m_Axis = input.ReadValue<float>();
-        else
-            AnimatorController.Play("Idle");
+        m_Axis = input.ReadValue<float>();
 
 
         if (!m_IsSit)
         {
-
             m_IsWalk = input.action.IsPressed();
-            //AnimatorController.SetBool("Walk", m_IsWalk);
-            AnimatorController.Play("Walk");
+            m_NextAnimation = m_Motion.Walk;
             if (m_IsWalk)
                 PlayMove(m_Axis);
             else
                 StopAllCoroutines();
 
         }
-        m_Sprite.flipX = m_Axis < 0;
+        if (input.action.IsPressed())
+            m_Sprite.flipX = m_Axis < 0;
+        else
+        {
+            m_NextAnimation = m_Motion.Idle;
+        }
+        AnimatorController.Play(m_NextAnimation.name);
+        AnimatorController.CrossFade(m_NextAnimation.name);
+
     }
 
     public void OnRun(InputAction.CallbackContext input)
     {
-        m_IsRun = input.action.IsPressed();
-        m_SpeedRun = 1f + Convert.ToInt32(m_IsRun);
-        //AnimatorController.SetBool("Run", m_IsRun);
-        AnimatorController.Play("Run");
+        if (input.control.IsPressed())
+        {
+            m_IsRun = input.action.IsPressed();
+            m_SpeedRun = 1f + Convert.ToInt32(m_IsRun);
+            //AnimatorController.SetBool("Run", m_IsRun);
+            //m_NextAnimation = m_Motion.Run;
+            AnimatorController.Play(m_Motion.Run.name);
+            AnimatorController.CrossFade();
 
-        if (m_IsWalk)
-            PlayMove(m_Axis);
+            if (m_IsWalk)
+                PlayMove(m_Axis);
+        }
+        else
+        {
+            AnimatorController.Play(m_NextAnimation.name);
+            m_SpeedRun = 0;
+        }
+
     }
 
     public void OnSitDown(InputAction.CallbackContext input)
