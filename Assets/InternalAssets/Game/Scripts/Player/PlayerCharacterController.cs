@@ -134,7 +134,6 @@ public class PlayerCharacterController : PlayerCharacter
     {
         m_Axis = input.ReadValue<float>();
 
-
         if (!m_IsSit)
         {
             m_IsWalk = input.action.IsPressed();
@@ -152,7 +151,6 @@ public class PlayerCharacterController : PlayerCharacter
             m_NextAnimation = m_Motion.Idle;
         }
         AnimatorController.Play(m_NextAnimation.name);
-        AnimatorController.CrossFade(m_NextAnimation.name);
 
     }
 
@@ -165,7 +163,6 @@ public class PlayerCharacterController : PlayerCharacter
             //AnimatorController.SetBool("Run", m_IsRun);
             //m_NextAnimation = m_Motion.Run;
             AnimatorController.Play(m_Motion.Run.name);
-            AnimatorController.CrossFade();
 
             if (m_IsWalk)
                 PlayMove(m_Axis);
@@ -213,9 +210,15 @@ public class PlayerCharacterController : PlayerCharacter
         m_IsRest = false;
         m_IsSleep = false;
         StartCoroutine(SleepAnimation(m_Motion.SitUp, m_Motion.Idle));
+        OnAction(KeyCode.S);
         //AnimatorController.SetBool("Sit", m_IsSit);
         //AnimatorController.SetBool("Rest", m_IsRest);
         //AnimatorController.SetBool("Sleep", m_IsSleep);
+    }
+
+    private void OnAction(KeyCode key)
+    {
+
     }
 
     private void PlayMove(float axis)
@@ -244,3 +247,5 @@ public class PlayerCharacterController : PlayerCharacter
         AnimatorController.Play(end.name);
     }
 }
+
+//public enum Keys{A }
