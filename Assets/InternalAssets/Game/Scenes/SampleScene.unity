@@ -240,10 +240,10 @@ RectTransform:
   m_Father: {fileID: 865008866}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121653595
 MonoBehaviour:
@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &183442045
 BoxCollider2D:
@@ -687,10 +686,10 @@ RectTransform:
   m_Father: {fileID: 1080044607}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -350}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &207122218
 MonoBehaviour:
@@ -853,7 +852,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &475091079
 BoxCollider2D:
@@ -1180,10 +1178,10 @@ RectTransform:
   m_Father: {fileID: 1080044607}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &561376386
 MonoBehaviour:
@@ -1270,7 +1268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &638842847
 BoxCollider2D:
@@ -1631,7 +1628,7 @@ Animator:
   m_GameObject: {fileID: 836239714}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 54adf343ed26d254b8b32f397cb017e9, type: 2}
+  m_Controller: {fileID: 9100000, guid: a9736ebb09d528a4b854ecc461ed21f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1746,7 +1743,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f486f1c494e42b44a837b0a84c1c056e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 100
 --- !u!50 &836239720
 Rigidbody2D:
@@ -1891,8 +1887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5502216418f258d4a88deeef242ec615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  Motion: {fileID: 11400000, guid: 954ea8cc0b3299f4699909a56bfcde42, type: 2}
 --- !u!1 &859176633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +1934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &859176636
 BoxCollider2D:
@@ -2182,10 +2175,10 @@ RectTransform:
   m_Father: {fileID: 865008866}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -150}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875969335
 MonoBehaviour:
@@ -2272,7 +2265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &889597610
 BoxCollider2D:
@@ -2526,7 +2518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &954391388
 Animator:
   serializedVersion: 4
@@ -2626,7 +2618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 5
 --- !u!61 &954391392
 BoxCollider2D:
@@ -2671,7 +2662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1056712175
 Animator:
   serializedVersion: 4
@@ -3209,10 +3200,10 @@ RectTransform:
   m_Father: {fileID: 1080044607}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -150}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203972706
 MonoBehaviour:
@@ -3422,10 +3413,10 @@ RectTransform:
   m_Father: {fileID: 865008866}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1291811071
 MonoBehaviour:
@@ -3707,10 +3698,10 @@ RectTransform:
   m_Father: {fileID: 1080044607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415518605
 MonoBehaviour:
@@ -4033,7 +4024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1642039068
 BoxCollider2D:
@@ -4180,7 +4170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1660202987
 BoxCollider2D:
@@ -4327,7 +4316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1681485396
 BoxCollider2D:
@@ -4445,7 +4433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1759501417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4576,7 +4564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1760292446
 BoxCollider2D:
@@ -4799,7 +4786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1808085680
 BoxCollider2D:
@@ -4946,7 +4932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1847569402
 BoxCollider2D:
@@ -5261,7 +5246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1898443307
 BoxCollider2D:
@@ -5574,7 +5558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e44b96bd5773644a361a339e20d4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorController: {fileID: 0}
   m_Health: 1
 --- !u!61 &1958155845
 BoxCollider2D:
